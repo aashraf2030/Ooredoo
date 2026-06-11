@@ -6,7 +6,7 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root'
 })
 export class PaymentService {
-  private apiUrl = 'http://oredo-back.xyz';
+  private apiUrl = 'https://oredo-back.xyz';
 
   constructor(private http: HttpClient) { }
 

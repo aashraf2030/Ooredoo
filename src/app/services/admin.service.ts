@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AdminService {
-  private apiUrl = 'http://oredo-back.xyz';
+  private apiUrl = 'https://oredo-back.xyz';
 
   constructor(private http: HttpClient) {}
 

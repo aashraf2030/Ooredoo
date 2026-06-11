@@ -27,7 +27,7 @@ interface RegisterRequest {
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://oredo-back.xyz/user';
+  private apiUrl = 'https://oredo-back.xyz/user';
   private currentUserSubject = new BehaviorSubject<any>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
   private tokenSubject = new BehaviorSubject<string | null>(this.getStoredToken());
