@@ -1,0 +1,146 @@
+<div class="w-full font-sans bg-white relative">
+    <div class="flex min-h-screen justify-center">
+        <!-- Sidebar -->
+        <aside class="w-[220px] hidden md:flex flex-col shrink-0 select-none">
+            <!-- App Logo -->
+            <div class="h-24 flex items-center px-8">
+                <!-- Using Ooredoo styled text if SVG logo not available -->
+                <span class="text-3xl font-bold text-[#ED1C24] tracking-tighter cursor-pointer">ooredoo<span class="text-[0.6em] align-top ml-1">&reg;</span></span>
+            </div>
+            
+            <nav class="flex flex-col mt-2">
+                <a href="javascript:void(0)" class="flex items-center px-8 py-3.5 text-gray-500 hover:text-gray-900 transition gap-4">
+                    <svg class="w-5 h-5 stroke-[1.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.592 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" /></svg>
+                    <span class="text-[14px] font-medium">Home</span>
+                </a>
+                <a href="javascript:void(0)" class="flex items-center px-8 py-3.5 text-[#ED1C24] gap-4 relative">
+                    <svg class="w-5 h-5 stroke-[1.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" /></svg>
+                    <span class="text-[14px] font-medium">Pay</span>
+                </a>
+                <a href="javascript:void(0)" class="flex items-center px-8 py-3.5 text-gray-500 hover:text-gray-900 transition gap-4">
+                    <svg class="w-5 h-5 stroke-[1.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
+                    <span class="text-[14px] font-medium">Shop</span>
+                </a>
+                <a href="javascript:void(0)" class="flex items-center px-8 py-3.5 text-gray-500 hover:text-gray-900 transition gap-4">
+                    <svg class="w-5 h-5 stroke-[1.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+                    <span class="text-[14px] font-medium">More</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Form Area -->
+        <main class="flex shrink-0 w-full sm:w-[420px] justify-center md:justify-start bg-white relative">
+            
+            <div id="firstPage" class="w-full bg-white sm:border-x sm:border-gray-100 flex flex-col relative h-screen sm:h-auto min-h-screen">
+                
+                <!-- Header -->
+                <header class="flex flex-row items-center justify-between px-5 py-4 shrink-0 mt-2 sm:mt-0">
+                    <button class="text-gray-700 hover:text-black focus:outline-none transition-colors">
+                        <svg class="w-5 h-5 stroke-[1.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>
+                    </button>
+                    <h1 class="text-[13px] font-semibold text-gray-900 tracking-wide">Pay</h1>
+                    <div class="flex items-center gap-2 text-gray-700">
+                        <span class="text-[12px] font-medium font-arabic mt-[1px]">عربي</span>
+                        <button class="hover:text-black focus:outline-none transition-colors ml-1">
+                            <svg class="w-4 h-4 stroke-[1.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" /></svg>
+                        </button>
+                    </div>
+                </header>
+
+                <!-- Scrollable Viewport -->
+                <div class="flex-1 overflow-y-auto px-5 pb-[140px] pt-2" style="-ms-overflow-style: none; scrollbar-width: none;">
+                    
+                    <!-- Top Banner Image -->
+                    <div class="mb-5">
+                        <img id="topImage" src="./imgs/topimage.webp" alt="Promotional Banner" class="w-full h-auto rounded-[1rem] object-cover pointer-events-none">
+                    </div>
+
+                    <!-- Input Fields -->
+                    <div class="flex gap-3 items-end">
+                        <div class="flex-1">
+                            <label class="block text-[9px] font-bold text-gray-600 mb-2 tracking-[0.05em] uppercase" data-lang="7">Mobile Number</label>
+                            <input id="inputField1" type="tel" maxlength="8" class="w-full px-3 py-2.5 text-[14px] font-medium border border-[#ED1C24] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#ED1C24] transition-all bg-white" placeholder="" (input)="onMobileInput($event)" [value]="mobileNumber1">
+                        </div>
+                        
+                        <div class="w-[30%]">
+                            <label class="block text-[9px] font-bold text-gray-600 mb-2 tracking-[0.05em] uppercase" data-lang="8">Amount</label>
+                            <div class="flex items-center border border-gray-300 rounded-lg focus-within:border-gray-400 bg-white overflow-hidden transition-all h-[42px]">
+                                <span class="pl-3 pr-1 text-[12px] text-gray-500 font-semibold select-none leading-none">KD</span>
+                                <input id="inputField1Price" type="tel" [value]="amount1" (input)="onAmountInput($event)" class="w-full py-0 pr-3 text-[14px] font-medium focus:outline-none bg-white text-gray-900 leading-none h-full bg-transparent">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Second Input Block (Hidden) -->
+                    <div id="secondinputBlock" class="mt-4 animate-fade-in" [class.hidden]="!showSecondInput">
+                        <div class="flex gap-3 items-end">
+                            <div class="flex-1">
+                                <label class="block text-[9px] font-bold text-gray-600 mb-2 tracking-[0.05em] uppercase" data-lang="9">Mobile Number</label>
+                                <input id="inputField2" type="tel" maxlength="8" class="w-full px-3 py-2.5 text-[14px] font-medium border border-[#ED1C24] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#ED1C24] transition-all bg-white" [value]="mobileNumber2" (input)="onMobileInput2($event)">
+                            </div>
+                            <div class="w-[30%]">
+                                <label class="block text-[9px] font-bold text-gray-600 mb-2 tracking-[0.05em] uppercase" data-lang="10">Amount</label>
+                                <div class="flex items-center border border-gray-300 rounded-lg focus-within:border-gray-400 bg-white overflow-hidden transition-all h-[42px]">
+                                    <span class="pl-3 pr-1 text-[12px] text-gray-500 font-semibold select-none leading-none">KD</span>
+                                    <input id="inputField2Price" type="tel" [value]="amount2" (input)="onAmountInput2($event)" class="w-full py-0 pr-3 text-[14px] font-medium focus:outline-none bg-white text-gray-900 leading-none h-full bg-transparent">
+                                </div>
+                            </div>
+                            <button id="secondinputRemove" (click)="removeSecondNumber()" class="mb-0 p-[9px] hover:bg-gray-50 rounded-lg transition-colors flex-shrink-0 text-gray-400 hover:text-red-500">
+                                <svg class="w-[22px] h-[22px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Add Button -->
+                    <div class="mt-8 flex justify-center" [class.hidden]="showSecondInput">
+                        <button id="payForAnotherNumber" (click)="addSecondNumber()" class="w-full py-3.5 border border-[#ED1C24] text-[#ED1C24] text-[10px] font-bold rounded-full tracking-[0.1em] hover:bg-[#ED1C24] hover:text-white transition-colors duration-300 select-none" data-lang="11">
+                            PAY FOR ANOTHER NUMBER
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- Footer Card -->
+                <div class="absolute bottom-4 left-4 right-4 bg-white border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.06)] rounded-2xl z-20">
+                    <div class="p-3.5">
+                        <div class="flex items-center gap-3 mb-4 mx-1 border-b border-gray-100 pb-3">
+                            <div class="shrink-0 flex items-center justify-center pt-1">
+                                <img src="https://fastro.online/myooredoo/assets/images/details-icon.svg" alt="" class="w-[28px] h-[28px] object-contain" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRUQxQzI0IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTkgMTJoNm0tNiA0aDZtMiA1SDdhMiAyIDAgMDEtMi0yVjVhMiAyIDAgMDEyLTJoNS41ODZhMSAxIDAgMDEuNzA3LjI5M2w1LjQxNCA1LjQxNGExIDEgMCAwMS4yOTMuNzA3VjE5YTIgMiAwIDAxLTIgMnoiPjwvcGF0aD48L3N2Zz4='">
+                            </div>
+                            <div class="pt-1 flex-1">
+                                <h4 class="font-medium text-gray-900 text-[12px] leading-tight select-none" data-lang="12">Bill payment / Recharge</h4>
+                                <p class="text-[10px] text-gray-500 mt-1 font-medium select-none">
+                                    <span data-lang="111">Total: KD</span>
+                                    <span id="totalAmount" class="font-semibold text-gray-700 ml-0.5">{{ getTotalAmount() }}</span>.000
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <button id="continueButton" (click)="goToSummaryPage()" 
+                            class="w-full py-[13px] text-[10px] font-bold tracking-[0.1em] rounded-full transition-all duration-300 ease-in-out select-none relative disabled:cursor-wait flex items-center justify-center" 
+                            [class.bg-[#ED1C24]]="isContinueEnabled() || isLoading" 
+                            [class.hover:bg-red-700]="isContinueEnabled() && !isLoading" 
+                            [class.bg-[#E2E5E9]]="!isContinueEnabled() && !isLoading"
+                            [class.text-white]="isContinueEnabled() || isLoading"
+                            [class.text-gray-400]="!isContinueEnabled() && !isLoading"
+                            [disabled]="!isContinueEnabled() || isLoading"
+                            [class.shadow-[0_0_20px_rgba(237,28,36,0.5)]]="isLoading"
+                            data-lang="13">
+                            
+                            <span [class.hidden]="isLoading">CONTINUE</span>
+                            <span [class.hidden]="!isLoading" class="flex items-center justify-center gap-2">
+                                <svg class="animate-spin h-[18px] w-[18px] text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                <span class="tracking-[0.15em] animate-pulse">PROCESSING...</span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+</div>

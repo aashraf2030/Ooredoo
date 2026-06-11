@@ -1,0 +1,21 @@
+/* KNET Page - Tailwind-only styling lives in the template (knet.html).
+   Keep this file for small cross-browser resets only. */
+
+/* Remove number input arrows */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+/* Reset button appearance for Safari */
+button {
+  appearance: none;
+  -webkit-appearance: none;
+}

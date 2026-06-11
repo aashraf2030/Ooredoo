@@ -1,0 +1,18 @@
+/* Remove number input arrows */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+/* Reset button appearance for Safari */
+button {
+  appearance: none;
+  -webkit-appearance: none;
+}

